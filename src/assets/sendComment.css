@@ -1,0 +1,69 @@
+.send-reply-container {
+  background-color: white;
+  width: 100%;
+  height: 110px;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+.send-reply-container img {
+  width: 45px;
+}
+.send-reply-container textarea {
+  outline: none;
+  resize: none;
+  border: 1px solid var(--Light-gray);
+  border-radius: 5px;
+  height: 100%;
+  padding: 10px;
+}
+.send-reply-container textarea:focus {
+  outline: none;
+  border: 1px solid var(--Dark-blue);
+}
+.send-reply-container button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: var(--Moderate-blue);
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+}
+
+.send-container {
+  background-color: white;
+  width: 40%;
+  height: 110px;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+.send-container img {
+  width: 45px;
+}
+.send-container textarea {
+  outline: none;
+  resize: none;
+  border: 1px solid var(--Light-gray);
+  border-radius: 5px;
+  height: 100%;
+  padding: 10px;
+}
+.send-container textarea:focus {
+  outline: none;
+  border: 1px solid var(--Dark-blue);
+}
+.send-container button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: var(--Moderate-blue);
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+}
+
+/*# sourceMappingURL=sendComment.css.map */

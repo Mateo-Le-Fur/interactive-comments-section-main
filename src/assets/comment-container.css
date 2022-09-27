@@ -1,0 +1,158 @@
+.vote {
+  background-color: var(--Very-light-gray);
+  border-radius: 10px;
+  height: 110px;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--Light-grayish-blue);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.count {
+  color: var(--Moderate-blue);
+  font-weight: 700;
+}
+
+.calc {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.368627451);
+  z-index: 1;
+}
+
+.delete-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 2;
+}
+.delete-popup h2 {
+  color: var(--Dark-blue);
+  font-weight: 500;
+}
+.delete-popup p {
+  line-height: 20px;
+  color: var(--Grayish-Blue);
+}
+.delete-popup .confirm-button {
+  justify-content: center;
+  gap: 20px;
+}
+.delete-popup .confirm-button .no-cancel {
+  border: none;
+  background-color: var(--Grayish-Blue);
+  color: white;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.delete-popup .confirm-button .yes-delete {
+  border: none;
+  background-color: var(--Soft-Red);
+  color: white;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.info-container {
+  justify-content: space-between;
+}
+.info-container .info {
+  gap: 15px;
+}
+.info-container .info img {
+  width: 35px;
+}
+.info-container .info .username {
+  color: var(--Dark-blue);
+  font-weight: 500;
+}
+.info-container .info .created-at {
+  color: var(--Grayish-Blue);
+}
+.info-container .info .my-messages {
+  background-color: var(--Moderate-blue);
+  color: white;
+  padding: 1px 5px;
+}
+.info-container .reply {
+  gap: 5px;
+  cursor: pointer;
+}
+.info-container .reply span {
+  color: var(--Moderate-blue);
+  font-weight: 700;
+}
+.info-container .edit-delete {
+  gap: 15px;
+}
+.info-container .edit-delete img {
+  cursor: pointer;
+  margin-right: 8px;
+}
+.info-container .edit-delete .edit {
+  cursor: pointer;
+  color: var(--Moderate-blue);
+  font-weight: 700;
+}
+.info-container .edit-delete .delete {
+  cursor: pointer;
+  color: var(--Soft-Red);
+  font-weight: 700;
+}
+
+.comment {
+  color: var(--Grayish-Blue);
+  line-height: 25px;
+}
+.comment p {
+  width: 100%;
+}
+.comment textarea {
+  display: block;
+  resize: none;
+  border: 1px solid var(--Light-gray);
+  border-radius: 5px;
+  height: 100px;
+  width: 100%;
+  padding: 10px;
+  overflow: auto;
+}
+.comment textarea:focus {
+  outline: none;
+  border: 1px solid var(--Dark-blue);
+}
+.comment button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: var(--Moderate-blue);
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+}
+.comment .update-comment {
+  align-items: end;
+  gap: 10px;
+}
+.comment .replying-to {
+  color: var(--Moderate-blue);
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=comment-container.css.map */

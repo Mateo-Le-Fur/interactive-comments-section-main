@@ -1,0 +1,27 @@
+img {
+  width: 45px;
+}
+
+textarea {
+  outline: none;
+  resize: none;
+  border: 1px solid var(--Light-gray);
+  border-radius: 5px;
+  height: 100%;
+  padding: 10px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid var(--Dark-blue);
+  }
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: var(--Moderate-blue);
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+}
