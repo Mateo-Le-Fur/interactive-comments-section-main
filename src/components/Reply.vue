@@ -17,17 +17,11 @@ const emit = defineEmits<{
   (e: "replyToResponse", obj: ReplyObj): void;
 }>();
 
-const state = reactive<{
-  deletePopup: boolean;
-  isReplyActive: boolean;
-}>({
-  deletePopup: false,
-  isReplyActive: false,
-});
-
-const replyId = ref();
-const commentId = ref();
-const textAreaValue = ref("");
+const deletePopup = ref<boolean>(false);
+const isReplyActive = ref<boolean>(false);
+const replyId = ref<number | null>();
+const commentId = ref<number | null>();
+const textAreaValue = ref<string>("");
 </script>
 
 <template>
@@ -58,7 +52,7 @@ const textAreaValue = ref("");
           </div>
           <div
             v-if="currentUser.username !== data.user.username"
-            @click="(state.isReplyActive = true), (replyId = data.id)"
+            @click="(isReplyActive = true), (replyId = data.id)"
             class="reply d-flex align-items-center"
           >
             <img src="../images/icon-reply.svg" alt="reply icon" />
@@ -67,12 +61,10 @@ const textAreaValue = ref("");
           <div v-else class="edit-delete d-flex align-items-center">
             <div class="d-flex align-items-center">
               <img src="../images/icon-delete.svg" alt="delete icon" />
-              <span @click="state.deletePopup = true" class="delete"
-                >Delete</span
-              >
-              <div v-if="state.deletePopup">
+              <span @click="deletePopup = true" class="delete">Delete</span>
+              <div v-if="deletePopup">
                 <Teleport to="body">
-                  <div @click="state.deletePopup = false" class="calc"></div>
+                  <div @click="deletePopup = false" class="calc"></div>
                 </Teleport>
                 <div
                   class="delete-popup d-flex flex-column justify-content-center p-30"
@@ -83,16 +75,12 @@ const textAreaValue = ref("");
                     remove the comment and can't be undone.
                   </p>
                   <div class="confirm-button d-flex">
-                    <button
-                      @click="state.deletePopup = false"
-                      class="no-cancel"
-                    >
+                    <button @click="deletePopup = false" class="no-cancel">
                       NO, CANCEL
                     </button>
                     <button
                       @click="
-                        emit('deleteReply', data.id),
-                          (state.deletePopup = false)
+                        emit('deleteReply', data.id), (deletePopup = false)
                       "
                       class="yes-delete"
                     >
@@ -136,11 +124,11 @@ const textAreaValue = ref("");
     </div>
     <div
       class="reply-to-response d-flex"
-      v-if="replyId === data.id && state.isReplyActive"
+      v-if="replyId === data.id && isReplyActive"
     >
       <ReplyToResponse
         @reply-to-response="emit('replyToResponse', $event)"
-        @is-reply-active="state.isReplyActive = false"
+        @is-reply-active="isReplyActive = false"
         :id="data.id"
         :current-user="currentUser"
       />

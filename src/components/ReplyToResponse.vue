@@ -13,7 +13,7 @@ const emit = defineEmits<{
   (e: "isReplyActive"): void;
 }>();
 
-const valueTextArea = ref("");
+const valueTextArea = ref<string>("");
 </script>
 
 <template>

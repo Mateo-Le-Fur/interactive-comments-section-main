@@ -10,7 +10,7 @@ const emit = defineEmits<{
   (e: "addComment", text: string): void;
 }>();
 
-const valueTextArea = ref("");
+const valueTextArea = ref<string>("");
 </script>
 
 <template>
