@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { RepliesInterface } from "@/interfaces/Comments.interface";
 import type { CurrentUserInterface } from "@/interfaces/CurrentUser.interface";
+import ReplyToResponse from "./ReplyToResponse.vue";
 import { reactive, ref } from "vue";
 
 defineProps<{
@@ -12,25 +13,29 @@ const emit = defineEmits<{
   (e: "deleteReply", id: number): void;
   (e: "updateReply", obj: object): void;
   (e: "replyToComment", obj: object): void;
+  (e: "replyToResponse", obj: object): void;
 }>();
 
 const state = reactive<{
   deletePopup: boolean;
+  isReplyActive: boolean;
 }>({
   deletePopup: false,
+  isReplyActive: false,
 });
 
-const commentId = ref();
-const textAreaValue = ref("");
+const replyId = ref<number>();
+const commentId = ref<number>();
+const textAreaValue = ref<string>("");
 </script>
 
 <template>
-  <div class="d-flex flex-column replies-container">
-    <div
-      class="reply-container d-flex f p-20"
-      v-for="data of reply"
-      :key="data.id"
-    >
+  <div
+    v-for="data of reply"
+    :key="data.id"
+    class="d-flex flex-column replies-container"
+  >
+    <div class="reply-container d-flex f p-20">
       <div
         class="vote d-flex flex-column align-items-center justify-content-center p-10 mr-20"
       >
@@ -52,6 +57,7 @@ const textAreaValue = ref("");
           </div>
           <div
             v-if="currentUser.username !== data.user.username"
+            @click="(state.isReplyActive = true), (replyId = data.id)"
             class="reply d-flex align-items-center"
           >
             <img src="../images/icon-reply.svg" alt="reply icon" />
@@ -127,6 +133,17 @@ const textAreaValue = ref("");
         </div>
       </div>
     </div>
+    <div
+      class="reply-to-response d-flex"
+      v-if="replyId === data.id && state.isReplyActive"
+    >
+      <ReplyToResponse
+        @reply-to-response="emit('replyToResponse', $event)"
+        @is-reply-active="state.isReplyActive = false"
+        :id="data.id"
+        :current-user="currentUser"
+      />
+    </div>
   </div>
 </template>
 
@@ -142,5 +159,9 @@ const textAreaValue = ref("");
   background-color: white;
   width: 95%;
   border-radius: 10px;
+}
+
+.reply-to-response {
+  width: 95%;
 }
 </style>

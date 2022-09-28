@@ -17,6 +17,7 @@ const emit = defineEmits<{
   (e: "updateComment", id: number, text: string): void;
   (e: "updateReply", obj: object): void;
   (e: "replyToComment", obj: object): void;
+  (e: "replyToResponse", obj: object): void;
 }>();
 
 const state = reactive<{
@@ -145,6 +146,7 @@ const textAreaValue = ref("");
       @delete-reply="emit('deleteReply', $event)"
       @update-reply="emit('updateReply', $event)"
       @reply-to-comment="emit('replyToComment', $event)"
+      @reply-to-response="emit('replyToResponse', $event)"
       v-if="data.replies.length"
       :reply="data.replies"
       :current-user="currentUser"

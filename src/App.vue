@@ -30,7 +30,6 @@ function addComment(text: string): void {
 }
 
 function replyToComment(obj: replyObj): void {
-  console.log(obj);
   state.comments.forEach((comment) => {
     if (comment.id === obj.id) {
       comment.replies?.push({
@@ -41,6 +40,22 @@ function replyToComment(obj: replyObj): void {
         user: state.currentUser,
       });
     }
+  });
+}
+
+function replyToResponse(obj: replyObj): void {
+  state.comments.forEach((comment) => {
+    comment.replies?.forEach((element) => {
+      if (element.id === obj.id) {
+        comment.replies?.push({
+          id: Date.now(),
+          content: obj.text,
+          replyingTo: element.user.username,
+          score: 0,
+          user: state.currentUser,
+        });
+      }
+    });
   });
 }
 
@@ -81,6 +96,7 @@ function deleteReply(id: number): void {
       @update-comment="updateComment"
       @update-reply="updateReply"
       @reply-to-comment="replyToComment"
+      @reply-to-response="replyToResponse"
       :comments="state.comments"
       :current-user="state.currentUser"
     />
