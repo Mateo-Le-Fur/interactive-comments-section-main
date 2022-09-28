@@ -3,6 +3,7 @@ import type { RepliesInterface } from "@/interfaces/Comments.interface";
 import type { CurrentUserInterface } from "@/interfaces/CurrentUser.interface";
 import ReplyToResponse from "./ReplyToResponse.vue";
 import { reactive, ref } from "vue";
+import type { ReplyObj } from "@/interfaces/Reply.interface";
 
 defineProps<{
   reply: RepliesInterface[];
@@ -11,9 +12,9 @@ defineProps<{
 
 const emit = defineEmits<{
   (e: "deleteReply", id: number): void;
-  (e: "updateReply", obj: object): void;
-  (e: "replyToComment", obj: object): void;
-  (e: "replyToResponse", obj: object): void;
+  (e: "updateReply", obj: ReplyObj): void;
+  (e: "replyToComment", obj: ReplyObj): void;
+  (e: "replyToResponse", obj: ReplyObj): void;
 }>();
 
 const state = reactive<{
@@ -24,9 +25,9 @@ const state = reactive<{
   isReplyActive: false,
 });
 
-const replyId = ref<number>();
-const commentId = ref<number>();
-const textAreaValue = ref<string>("");
+const replyId = ref();
+const commentId = ref();
+const textAreaValue = ref("");
 </script>
 
 <template>
@@ -118,7 +119,7 @@ const textAreaValue = ref<string>("");
           </p>
           <div class="update-comment d-flex flex-column" v-else>
             <textarea
-              @input="textAreaValue = $event.target.value"
+              @input="textAreaValue = ($event.target as HTMLInputElement).value"
               :value="textAreaValue"
             ></textarea>
             <button

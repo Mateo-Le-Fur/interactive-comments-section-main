@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CurrentUserInterface } from "@/interfaces/CurrentUser.interface";
 import { ref } from "vue";
+import type { ReplyObj } from "@/interfaces/Reply.interface";
 
 defineProps<{
   id: number;
@@ -8,7 +9,7 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "replyToComment", obj: object): void;
+  (e: "replyToComment", obj: ReplyObj): void;
   (e: "isReplyActive"): void;
 }>();
 
@@ -19,7 +20,7 @@ const valueTextArea = ref("");
   <div class="send-reply-container d-flex p-20">
     <img :src="`./src/${currentUser.image.png}`" alt="avatar current user" />
     <textarea
-      @input="valueTextArea = $event.target.value"
+      @input="valueTextArea = ($event.target as HTMLInputElement).value"
       class="flex-fill"
     ></textarea>
     <button

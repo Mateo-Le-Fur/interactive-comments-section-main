@@ -5,6 +5,7 @@ import ReplyToComment from "./ReplyToComment.vue";
 
 import type { CurrentUserInterface } from "@/interfaces/CurrentUser.interface";
 import { reactive, ref } from "vue";
+import type { ReplyObj } from "@/interfaces/Reply.interface";
 
 defineProps<{
   comments: CommentsInterface[];
@@ -15,9 +16,9 @@ const emit = defineEmits<{
   (e: "deleteComment", id: number): void;
   (e: "deleteReply", id: number): void;
   (e: "updateComment", id: number, text: string): void;
-  (e: "updateReply", obj: object): void;
-  (e: "replyToComment", obj: object): void;
-  (e: "replyToResponse", obj: object): void;
+  (e: "updateReply", obj: ReplyObj): void;
+  (e: "replyToComment", obj: ReplyObj): void;
+  (e: "replyToResponse", obj: ReplyObj): void;
 }>();
 
 const state = reactive<{
@@ -119,7 +120,7 @@ const textAreaValue = ref("");
           </p>
           <div class="update-comment d-flex flex-column" v-else>
             <textarea
-              @input="textAreaValue = $event.target.value"
+              @input="textAreaValue = ($event.target as HTMLInputElement).value"
               :value="textAreaValue"
             ></textarea>
             <button
@@ -147,7 +148,7 @@ const textAreaValue = ref("");
       @update-reply="emit('updateReply', $event)"
       @reply-to-comment="emit('replyToComment', $event)"
       @reply-to-response="emit('replyToResponse', $event)"
-      v-if="data.replies.length"
+      v-if="data.replies?.length"
       :reply="data.replies"
       :current-user="currentUser"
     />

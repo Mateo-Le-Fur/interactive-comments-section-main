@@ -18,7 +18,7 @@ const valueTextArea = ref("");
     <img :src="`./src/${currentUser.image.png}`" alt="avatar current user" />
     <textarea
       :value="valueTextArea"
-      @input="valueTextArea = $event.target.value"
+      @input="valueTextArea = ($event.target as HTMLInputElement).value"
       class="flex-fill"
       placeholder="Add a comment..."
     ></textarea>

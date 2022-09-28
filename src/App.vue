@@ -5,11 +5,7 @@ import type { CommentsInterface } from "@/interfaces/Comments.interface";
 import Comments from "./components/Comments.vue";
 import type { CurrentUserInterface } from "@/interfaces/CurrentUser.interface";
 import SendComment from "@/components/SendComment.vue";
-
-interface replyObj {
-  id: number;
-  text: string;
-}
+import type { ReplyObj } from "@/interfaces/Reply.interface";
 
 const state = reactive<{
   comments: CommentsInterface[];
@@ -29,7 +25,7 @@ function addComment(text: string): void {
   });
 }
 
-function replyToComment(obj: replyObj): void {
+function replyToComment(obj: ReplyObj): void {
   state.comments.forEach((comment) => {
     if (comment.id === obj.id) {
       comment.replies?.push({
@@ -43,7 +39,7 @@ function replyToComment(obj: replyObj): void {
   });
 }
 
-function replyToResponse(obj: replyObj): void {
+function replyToResponse(obj: ReplyObj): void {
   state.comments.forEach((comment) => {
     comment.replies?.forEach((element) => {
       if (element.id === obj.id) {
@@ -71,7 +67,7 @@ function deleteComment(id: number): void {
   state.comments = state.comments.filter((comment) => comment.id !== id);
 }
 
-function updateReply(obj: replyObj): void {
+function updateReply(obj: ReplyObj): void {
   state.comments.forEach((comment) => {
     comment.replies?.forEach((element) => {
       if (element.id === obj.id) {
