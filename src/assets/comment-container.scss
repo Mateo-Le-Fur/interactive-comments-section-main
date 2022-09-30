@@ -1,7 +1,25 @@
+@use "./mixins" as m;
+
+
 .vote {
   background-color: var(--Very-light-gray);
   border-radius: 10px;
   height: 110px;
+
+  @include m.xs {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 40px;
+    width: 110px;
+  }
+
+  button, p {
+    @include m.xs {
+      margin: 0;
+
+    }
+  }
 }
 
 button {
@@ -106,6 +124,12 @@ button {
     gap: 5px;
     cursor: pointer;
 
+    @include m.xs {
+      position: absolute;
+      bottom: 33px;
+      right: 25px;
+    }
+
     span {
       color: var(--Moderate-blue);
       font-weight: 700;
@@ -114,6 +138,12 @@ button {
 
   .edit-delete {
     gap: 15px;
+
+    @include m.xs {
+      position: absolute;
+      bottom: 33px;
+      right: 25px;
+    }
 
     img {
       cursor: pointer;

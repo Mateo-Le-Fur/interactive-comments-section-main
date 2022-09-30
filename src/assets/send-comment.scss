@@ -1,3 +1,5 @@
+@use "./mixins" as m;
+
 .send-reply-container {
   background-color: white;
   width: 100%;
@@ -7,11 +9,20 @@
   align-items: flex-start;
   gap: 20px;
 
+  @include m.xs {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 15px;
+
+  }
+
   @import "send-comment-content";
 }
 
 
 .send-container {
+  position: relative;
   background-color: white;
   width: 40%;
   height: 110px;
@@ -19,6 +30,15 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
+
+  @include m.xs {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 15px;
+
+  }
+
 
   @import "send-comment-content";
 

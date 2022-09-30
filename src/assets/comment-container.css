@@ -3,6 +3,20 @@
   border-radius: 10px;
   height: 110px;
 }
+@media (max-width: 576px) {
+  .vote {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 40px;
+    width: 110px;
+  }
+}
+@media (max-width: 576px) {
+  .vote button, .vote p {
+    margin: 0;
+  }
+}
 
 button {
   background: transparent;
@@ -94,12 +108,26 @@ button {
   gap: 5px;
   cursor: pointer;
 }
+@media (max-width: 576px) {
+  .info-container .reply {
+    position: absolute;
+    bottom: 33px;
+    right: 25px;
+  }
+}
 .info-container .reply span {
   color: var(--Moderate-blue);
   font-weight: 700;
 }
 .info-container .edit-delete {
   gap: 15px;
+}
+@media (max-width: 576px) {
+  .info-container .edit-delete {
+    position: absolute;
+    bottom: 33px;
+    right: 25px;
+  }
 }
 .info-container .edit-delete img {
   cursor: pointer;

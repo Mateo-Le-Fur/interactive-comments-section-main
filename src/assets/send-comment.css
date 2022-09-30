@@ -7,8 +7,22 @@
   align-items: flex-start;
   gap: 20px;
 }
+@media (max-width: 576px) {
+  .send-reply-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 15px;
+  }
+}
 .send-reply-container img {
   width: 45px;
+}
+@media (max-width: 576px) {
+  .send-reply-container img {
+    width: 35px;
+    grid-area: 2/1/3/2;
+  }
 }
 .send-reply-container textarea {
   outline: none;
@@ -22,6 +36,12 @@
   outline: none;
   border: 1px solid var(--Dark-blue);
 }
+@media (max-width: 576px) {
+  .send-reply-container textarea {
+    grid-area: 1/1/2/3;
+    height: 100px;
+  }
+}
 .send-reply-container button {
   cursor: pointer;
   border: none;
@@ -31,8 +51,16 @@
   width: 80px;
   height: 40px;
 }
+@media (max-width: 576px) {
+  .send-reply-container button {
+    grid-area: 2/2/3/3;
+    height: 45px;
+    margin-left: auto;
+  }
+}
 
 .send-container {
+  position: relative;
   background-color: white;
   width: 40%;
   height: 110px;
@@ -41,8 +69,22 @@
   align-items: flex-start;
   gap: 20px;
 }
+@media (max-width: 576px) {
+  .send-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    padding: 15px;
+  }
+}
 .send-container img {
   width: 45px;
+}
+@media (max-width: 576px) {
+  .send-container img {
+    width: 35px;
+    grid-area: 2/1/3/2;
+  }
 }
 .send-container textarea {
   outline: none;
@@ -56,6 +98,12 @@
   outline: none;
   border: 1px solid var(--Dark-blue);
 }
+@media (max-width: 576px) {
+  .send-container textarea {
+    grid-area: 1/1/2/3;
+    height: 100px;
+  }
+}
 .send-container button {
   cursor: pointer;
   border: none;
@@ -65,5 +113,12 @@
   width: 80px;
   height: 40px;
 }
+@media (max-width: 576px) {
+  .send-container button {
+    grid-area: 2/2/3/3;
+    height: 45px;
+    margin-left: auto;
+  }
+}
 
-/*# sourceMappingURL=sendComment.css.map */
+/*# sourceMappingURL=send-comment.css.map */

@@ -1,5 +1,12 @@
+@use "./mixins" as m;
+
 img {
   width: 45px;
+
+  @include  m.xs {
+    width: 35px;
+    grid-area: 2 / 1 / 3 / 2;
+  }
 }
 
 textarea {
@@ -14,6 +21,11 @@ textarea {
     outline: none;
     border: 1px solid var(--Dark-blue);
   }
+
+  @include m.xs {
+    grid-area: 1 / 1 / 2 / 3;
+    height: 100px;
+  }
 }
 
 button {
@@ -24,4 +36,10 @@ button {
   border-radius: 5px;
   width: 80px;
   height: 40px;
+
+  @include  m.xs {
+    grid-area: 2 / 2 / 3 / 3;
+    height: 45px;
+    margin-left: auto;
+  }
 }

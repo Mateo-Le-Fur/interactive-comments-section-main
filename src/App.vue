@@ -105,7 +105,6 @@ function deleteReply(id: number): void {
 
 .app-container {
   width: 100%;
-  height: 100vh;
   gap: 20px;
 }
 </style>

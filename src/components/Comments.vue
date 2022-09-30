@@ -57,7 +57,7 @@ const textAreaValue = ref<string>("");
           </div>
           <div
             v-if="currentUser.username !== data.user.username"
-            @click="(isReplyActive = true), (replyId = data.id)"
+            @click="(isReplyActive = !isReplyActive), (replyId = data.id)"
             class="reply d-flex align-items-center"
           >
             <img src="../images/icon-reply.svg" alt="reply icon" />
@@ -147,15 +147,26 @@ const textAreaValue = ref<string>("");
 </template>
 
 <style scoped lang="scss">
+@use "@/assets/mixins" as m;
 @import "./src/assets/comment-container";
 
 .comments-container {
   width: 40%;
   gap: 20px;
 
+  @include m.xs {
+    width: 100%;
+  }
+
   .comment-container {
     background-color: white;
     border-radius: 10px;
+
+    @include m.xs {
+      position: relative;
+      flex-direction: column-reverse;
+      gap: 10px;
+    }
   }
 }
 

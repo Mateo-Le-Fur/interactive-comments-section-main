@@ -37,5 +37,5 @@ const valueTextArea = ref<string>("");
 </template>
 
 <style scoped lang="scss">
-@import "./src/assets/sendComment";
+@import "./src/assets/send-comment";
 </style>
