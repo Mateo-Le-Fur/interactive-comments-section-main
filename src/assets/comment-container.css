@@ -144,14 +144,14 @@ button {
   font-weight: 700;
 }
 
-.comment {
+.text-comment {
   color: var(--Grayish-Blue);
   line-height: 25px;
 }
-.comment p {
+.text-comment p {
   width: 100%;
 }
-.comment textarea {
+.text-comment textarea {
   display: block;
   resize: none;
   border: 1px solid var(--Light-gray);
@@ -161,11 +161,11 @@ button {
   padding: 10px;
   overflow: auto;
 }
-.comment textarea:focus {
+.text-comment textarea:focus {
   outline: none;
   border: 1px solid var(--Dark-blue);
 }
-.comment button {
+.text-comment button {
   cursor: pointer;
   border: none;
   color: white;
@@ -174,11 +174,11 @@ button {
   width: 100px;
   height: 40px;
 }
-.comment .update-comment {
+.text-comment .update-comment {
   align-items: end;
   gap: 10px;
 }
-.comment .replying-to {
+.text-comment .replying-to {
   color: var(--Moderate-blue);
   font-weight: 500;
 }

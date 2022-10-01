@@ -85,7 +85,7 @@ function deleteReply(id: number): void {
 </script>
 
 <template>
-  <div class="app-container d-flex flex-column align-items-center p-30">
+  <main class="app-container d-flex flex-column align-items-center p-30">
     <Comments
       @delete-comment="deleteComment"
       @delete-reply="deleteReply"
@@ -97,14 +97,20 @@ function deleteReply(id: number): void {
       :current-user="state.currentUser"
     />
     <SendComment @add-comment="addComment" :current-user="state.currentUser" />
-  </div>
+  </main>
 </template>
 
 <style lang="scss">
+@use "@/assets/mixins" as m;
 @import "./assets/base";
 
 .app-container {
+  height: 100vh;
   width: 100%;
   gap: 20px;
+
+  @include m.xs {
+    height: auto;
+  }
 }
 </style>

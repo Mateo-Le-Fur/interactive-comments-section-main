@@ -100,7 +100,7 @@ const textAreaValue = ref<string>("");
             </div>
           </div>
         </div>
-        <div class="comment">
+        <div class="text-comment">
           <p v-if="commentId !== data.id">
             <span class="replying-to">@{{ data.replyingTo }}</span>
             {{ data.content }}
